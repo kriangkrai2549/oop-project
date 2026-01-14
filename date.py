@@ -35,3 +35,19 @@ def date_diff(date1, date2):
     return days 
  
 print(date_diff("25-12-1999", "9-3-2000")) 
+ 
+def day_of_week(day, month, year): 
+    # Zeller's congruence (simplified) 
+    if month < 3: 
+        month += 12 
+        year -= 1 
+ 
+    K = year % 100 
+    J = year // 100 
+ 
+    h = (day + (13*(month+1))//5 + K + K//4 + J//4 + 5*J) % 7 
+ 
+    days = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] 
+    return days[h] 
+ 
+print(day_of_week(9, 3, 2000)) 
